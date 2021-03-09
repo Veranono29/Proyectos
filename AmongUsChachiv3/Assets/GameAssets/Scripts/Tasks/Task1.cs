@@ -11,7 +11,7 @@ public class Task1 : MonoBehaviour
     [SerializeField]
     Image progressBar;
 
-    bool isDownloading = false;
+    bool isClearing = false;
 
     float _amount;
 
@@ -40,7 +40,7 @@ public class Task1 : MonoBehaviour
         StopAllCoroutines();
         amount = 0;
         progressBar.fillAmount = 0;
-        isDownloading = false;
+        isClearing = false;
     }
 
     void ActualiceBar()
@@ -49,17 +49,17 @@ public class Task1 : MonoBehaviour
         progressText.text = amount.ToString() + "%";
     }
 
-    public void StartDownload()
+    public void StartCleaning()
     {
-        if (!isDownloading)
+        if (!isClearing)
         {
-            StartCoroutine(Download());
-            isDownloading = true;
+            StartCoroutine(Clear());
+            isClearing = true;
         }
 
     }
 
-    IEnumerator Download()
+    IEnumerator Clear()
     {
         yield return new WaitForSeconds(0.1f);
         amount += 2;
@@ -70,7 +70,7 @@ public class Task1 : MonoBehaviour
         }
         else
         {
-            StartCoroutine(Download());
+            StartCoroutine(Clear());
         }
     }
 }

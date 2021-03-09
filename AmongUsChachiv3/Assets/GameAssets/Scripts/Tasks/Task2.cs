@@ -35,12 +35,13 @@ public class Task2 : MonoBehaviour
     {
         if(display.text.Equals(contrasena.text))
         {
-            print("Correcto");
             TaskManager.instance.FinishTask(true);
         }
         else
         {
-            print("Error");
+            // Borrar el texto después de 2 segundos
+            display.text = "Error";
+            Invoke("EraseNumbers", 2);
         }
     }
     
