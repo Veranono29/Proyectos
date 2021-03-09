@@ -11,15 +11,8 @@ public class Task2 : MonoBehaviour
     [SerializeField]    //se usará para mostrar los numeros introducidos
     Text contrasena;
 
-    bool isDownloading = false;
+   
 
-    /*public void Init()
-    {
-
-       
-        isDownloading = false;
-    }
-    */
     private void Start()
     {
         createPassword();

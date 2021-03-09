@@ -6,71 +6,19 @@ using UnityEngine.UI;
 public class Task1 : MonoBehaviour
 {
     [SerializeField]
-    Text progressText;
+    Text titulo;
 
-    [SerializeField]
-    Image progressBar;
-
-    bool isClearing = false;
-
-    float _amount;
-
-    public float amount
+    public void pushBoton(Button boton)
     {
-        get
-        {
-            return _amount;
-        }
-        set
-        {
-            if (value > 100)
-            {
-                _amount = 100;
-            }
-            else
-            {
-                _amount = value;
-            }
-            ActualiceBar();
-        }
-    }
-
-    public void Init()
-    {
-        StopAllCoroutines();
-        amount = 0;
-        progressBar.fillAmount = 0;
-        isClearing = false;
-    }
-
-    void ActualiceBar()
-    {
-        progressBar.fillAmount = amount / 100;
-        progressText.text = amount.ToString() + "%";
-    }
-
-    public void StartCleaning()
-    {
-        if (!isClearing)
-        {
-            StartCoroutine(Clear());
-            isClearing = true;
-        }
+        titulo.text = "BASURA TIRADA";
+        boton.transform.Rotate(0,0, 180);
+        Invoke("done",2);
 
     }
-
-    IEnumerator Clear()
+    private void done()
     {
-        yield return new WaitForSeconds(0.1f);
-        amount += 2;
-
-        if (amount >= 100)
-        {
-            TaskManager.instance.FinishTask(true);
-        }
-        else
-        {
-            StartCoroutine(Clear());
-        }
+        TaskManager.instance.FinishTask(true);
     }
+   
+    
 }

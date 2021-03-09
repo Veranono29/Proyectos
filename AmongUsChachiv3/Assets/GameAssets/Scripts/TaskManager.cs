@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum taskType { DownloadData, ClearGarbage, Contrasena, Cartas }
+public enum taskType { DownloadData, Basura, Contrasena, Cartas, Boton,CiculoBotones }
 
 public class TaskManager : MonoBehaviour
 {
